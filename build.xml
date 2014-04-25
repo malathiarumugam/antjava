@@ -142,6 +142,7 @@
     <property name="test.home"      value="${basedir}/test"/>
     <property name="web.home"      value="${basedir}/web"/>
     <property name="src.lib.home"      value="${basedir}/lib/compile"/>
+    <property name="test.lib.home"      value="${basedir}/lib/test"/>
     <property name="lib.home"      value="${basedir}/lib"/>
     <property name="report.home"   value="${basedir}/report"/>
 
@@ -193,6 +194,9 @@
             <pathelement location="${foo.jar}"/>
         -->
         <fileset dir="${src.lib.home}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${test.lib.home}">
             <include name="*.jar"/>
         </fileset>
 
@@ -467,7 +471,8 @@
         <mkdir  dir="${build.home}"/>
         <mkdir  dir="${build.home}/WEB-INF"/>
         <mkdir  dir="${build.home}/WEB-INF/classes"/>
-        <ivy:retrieve pattern="${lib.home}/[conf]/[artifact].[ext]"/>
+        <ivy:retrieve pattern="${lib.home}/[conf]/[artifact].[ext]" sync="true"/>
+
 
         <!-- Copy static content of this web application -->
         <copy todir="${build.home}">

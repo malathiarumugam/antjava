@@ -1,13 +1,13 @@
 <ivy-module version="2.0">
     <info organisation="org.apache" module="hello-ivy"/>
-        <configurations defaultconfmapping="default->default">
-            <conf name="compile" />
-            <conf name="test" />
+        <configurations defaultconfmapping="compile">
+            <conf name="compile" visibility="public"/>
+            <conf name="test" visibility="public" />
         </configurations>
     <dependencies>
         <dependency org="commons-lang" name="commons-lang" rev="2.0" conf="compile"/>
         <dependency org="commons-cli" name="commons-cli" rev="1.0" conf="compile"/>
-        <dependency org="junit" name="junit" rev="4.8.1" conf="test->compile" />
-        <dependency org="org.hamcrest" name="hamcrest-all" rev="1.1" conf="test->compile"/>
+        <dependency org="junit" name="junit" rev="4.8.1" conf="test->default" />
+        <dependency org="org.hamcrest" name="hamcrest-all" rev="1.1" conf="test->default"/>
     </dependencies>
 </ivy-module>
