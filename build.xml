@@ -45,7 +45,7 @@
      set to the current working directory.
 -->
 
-<project name="Sample_Web_App" default="compile" basedir=".">
+<project name="Sample_Web_App" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
 
 
 
@@ -450,7 +450,7 @@
         <mkdir  dir="${build.home}"/>
         <mkdir  dir="${build.home}/WEB-INF"/>
         <mkdir  dir="${build.home}/WEB-INF/classes"/>
-
+        <ivy:retrieve />
 
         <!-- Copy static content of this web application -->
         <copy todir="${build.home}">
