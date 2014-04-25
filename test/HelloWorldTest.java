@@ -1,10 +1,11 @@
-public class HelloWorldTest extends junit.framework.TestCase {
+import junit.framework.Assert;
+import junit.framework.TestCase;
+import org.junit.Test;
 
-    public void testNothing() {
+public class HelloWorldTest extends TestCase{
+
+    @Test
+    public void  ShouldBeTrue(){
+        Assert.assertTrue(true);
     }
-
-    public void testWillAlwaysFail() {
-
-    }
-
 }
