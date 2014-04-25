@@ -139,8 +139,11 @@
     <property name="manager.username" value="tomcat_script"/>
     <property name="manager.password" value="tomcat"/>
     <property name="src.home"      value="${basedir}/src"/>
+    <property name="test.home"      value="${basedir}/test"/>
     <property name="web.home"      value="${basedir}/web"/>
+    <property name="src.lib.home"      value="${basedir}/lib/compile"/>
     <property name="lib.home"      value="${basedir}/lib"/>
+    <property name="report.home"   value="${basedir}/report"/>
 
 
     <!-- ==================== External Dependencies =========================== -->
@@ -189,7 +192,7 @@
         <!--
             <pathelement location="${foo.jar}"/>
         -->
-        <fileset dir="${lib.home}">
+        <fileset dir="${src.lib.home}">
             <include name="*.jar"/>
         </fileset>
 
@@ -314,6 +317,20 @@
         </copy>
 
     </target>
+
+
+    <target name="test" depends="compile">
+        <mkdir dir="${report.home}"/>
+        <junit printsummary="yes">
+            <classpath refid="compile.classpath"/>
+            <formatter type="xml"/>
+
+            <batchtest fork="yes" todir="${report.home}">
+                <fileset dir="${test.home}" includes="*Test.java"/>
+            </batchtest>
+        </junit>
+    </target>
+
 
 
 
@@ -450,7 +467,7 @@
         <mkdir  dir="${build.home}"/>
         <mkdir  dir="${build.home}/WEB-INF"/>
         <mkdir  dir="${build.home}/WEB-INF/classes"/>
-        <ivy:retrieve />
+        <ivy:retrieve pattern="${lib.home}/[conf]/[artifact].[ext]"/>
 
         <!-- Copy static content of this web application -->
         <copy todir="${build.home}">
@@ -462,7 +479,7 @@
         <mkdir  dir="${build.home}/WEB-INF/lib"/>
 
         <copy todir="${build.home}/WEB-INF/lib">
-            <fileset dir="${lib.home}"/>
+            <fileset dir="${src.lib.home}"/>
         </copy>
 
         <!-- Copy static files from external dependencies as needed -->
@@ -518,6 +535,7 @@
                   path="${app.path}"/>
 
     </target>
+
 
 
 </project>
