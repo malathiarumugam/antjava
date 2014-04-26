@@ -3,3 +3,4 @@ dist/
 .idea/
 report/
 test/classes/
+target/

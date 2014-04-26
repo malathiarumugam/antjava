@@ -3,9 +3,9 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 
-public class HelloWorldTest{
+public class SampleTest extends TestCase {
 
-    public void  testShouldBeTrue(){
+    public void testShould(){
         Assert.assertTrue(true);
     }
 }

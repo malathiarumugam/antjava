@@ -315,14 +315,6 @@
             <classpath refid="compile.classpath"/>
         </javac>
 
-        <javac srcdir="${test.home}"
-               destdir="${test.home}/classes"
-               debug="${compile.debug}"
-               deprecation="${compile.deprecation}"
-               optimize="${compile.optimize}">
-            <classpath refid="compile.classpath"/>
-        </javac>
-
         <!-- Copy application resources -->
         <copy  todir="${build.home}/WEB-INF/classes">
             <fileset dir="${src.home}" excludes="**/*.java"/>
@@ -333,6 +325,16 @@
 
     <target name="test" depends="compile">
         <mkdir dir="${report.home}"/>
+        <mkdir  dir="${test.home}/classes"/>
+
+        <javac srcdir="${test.home}"
+               destdir="${test.home}/classes"
+               debug="${compile.debug}"
+               deprecation="${compile.deprecation}"
+               optimize="${compile.optimize}">
+            <classpath refid="compile.classpath"/>
+        </javac>
+
         <junit printsummary="yes">
             <classpath refid="compile.classpath"/>
             <formatter type="xml"/>
@@ -479,7 +481,6 @@
         <mkdir  dir="${build.home}"/>
         <mkdir  dir="${build.home}/WEB-INF"/>
         <mkdir  dir="${build.home}/WEB-INF/classes"/>
-        <mkdir  dir="${test.home}/classes"/>
         <ivy:retrieve pattern="${lib.home}/[conf]/[artifact].[ext]" sync="true"/>
 
 
