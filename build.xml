@@ -196,9 +196,7 @@
         <fileset dir="${src.lib.home}">
             <include name="*.jar"/>
         </fileset>
-        <fileset dir="${test.lib.home}">
-            <include name="*.jar"/>
-        </fileset>
+
 
         <!-- Include all elements that Tomcat exposes to applications -->
         <fileset dir="${catalina.home}/bin">
@@ -206,6 +204,13 @@
         </fileset>
         <pathelement location="${catalina.home}/lib"/>
         <fileset dir="${catalina.home}/lib">
+            <include name="*.jar"/>
+        </fileset>
+
+    </path>
+
+    <path id="test.classpath">
+        <fileset dir="${test.lib.home}">
             <include name="*.jar"/>
         </fileset>
 
@@ -325,22 +330,13 @@
 
     <target name="test" depends="compile">
         <mkdir dir="${report.home}"/>
-        <mkdir  dir="${test.home}/classes"/>
 
-        <javac srcdir="${test.home}"
-               destdir="${test.home}/classes"
-               debug="${compile.debug}"
-               deprecation="${compile.deprecation}"
-               optimize="${compile.optimize}">
-            <classpath refid="compile.classpath"/>
-        </javac>
-
-        <junit printsummary="yes">
-            <classpath refid="compile.classpath"/>
+    <junit printsummary="yes" haltonerror="true">
+            <classpath refid="test.classpath"/>
             <formatter type="xml"/>
 
-            <batchtest fork="yes" todir="${report.home}">
-                <fileset dir="${test.home}/classes" includes="*.class"/>
+            <batchtest todir="${report.home}">
+                <fileset dir="${test.home}" includes="*.java"/>
             </batchtest>
         </junit>
     </target>
