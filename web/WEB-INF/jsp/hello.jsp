@@ -10,7 +10,8 @@
 <img src="images/tomcat.gif">
 </td>
 <td>
-<h1>Sample Application JSP Page</h1>
+<h1>${message}</h1>
+<h2>Sample Application JSP Page</h2>
 This is the output of a JSP page that is part of the Hello, World
 application.
 </td>
