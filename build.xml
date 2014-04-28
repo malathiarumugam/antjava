@@ -477,7 +477,7 @@
         <mkdir  dir="${build.home}"/>
         <mkdir  dir="${build.home}/WEB-INF"/>
         <mkdir  dir="${build.home}/WEB-INF/classes"/>
-        <ivy:retrieve pattern="${lib.home}/[conf]/[artifact].[ext]" sync="true"/>
+        <ivy:retrieve pattern="${lib.home}/[conf]/[artifact].[ext]" type="jar,bundle" sync="true"/>
 
 
         <!-- Copy static content of this web application -->
