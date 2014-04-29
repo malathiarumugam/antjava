@@ -21,6 +21,9 @@
         <property name="hibernate.connection.password">
             passwd
         </property>
+        <property name="hibernate.current_session_context_class">
+            org.hibernate.context.internal.ThreadLocalSessionContext
+        </property>
 
         <!-- List of XML mapping files -->
         <!--<mapping resource="Employee.hbm.xml"/>-->
