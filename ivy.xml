@@ -9,7 +9,7 @@
         <dependency org="commons-cli" name="commons-cli" rev="1.0" conf="compile"/>
         <dependency org="org.springframework" name="spring-webmvc" rev="3.0.+" conf="compile->default"/>
         <dependency org="org.hibernate" name="hibernate-core" rev="4.3.5.Final" conf="compile->default"/>
-        <dependency org="org.hibernate" name="hibernate-validator" rev="4.0.+" conf="compile->default"/>
+        <dependency org="org.hibernate" name="hibernate-validator" rev="4.3.1.Final" conf="compile->default"/>
         <dependency org="javax.servlet" name="servlet-api" rev="latest.integration" conf="compile->default"/>
         <dependency org="cglib" name="cglib" rev="latest.integration" conf="compile->default"/>
         <dependency org="mysql" name="mysql-connector-java" rev="latest.integration" conf="compile->default"/>
