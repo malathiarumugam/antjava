@@ -1,11 +1,10 @@
 package sample.util;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import sample.domains.Event;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
 
 @Configuration
 public class AppContext {
@@ -16,5 +15,10 @@ public class AppContext {
     @Bean
     public SessionFactory sessionFactory() {
         return hibernateUtil.BuildSessionFactory();
+    }
+
+    @Bean
+    public HibernateTransactionManager transactionManager(){
+        return new HibernateTransactionManager(sessionFactory());
     }
 }

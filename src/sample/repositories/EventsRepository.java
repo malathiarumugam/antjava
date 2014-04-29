@@ -19,9 +19,9 @@ public class EventsRepository {
 
     public void AddEvents(Event event){
         Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.beginTransaction();
+//        Transaction transaction = session.beginTransaction();
         session.save(event);
-        transaction.commit();
+//        transaction.commit();
     }
 
 
